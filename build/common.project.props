@@ -44,7 +44,6 @@
     <IsBuildOnlyXPLATProjects>$(DotNetBuildFromSource)</IsBuildOnlyXPLATProjects>
     <MicrosoftDotNetBuildTasksFeedFilePath>$(SolutionPackagesFolder)microsoft.dotnet.build.tasks.feed\2.2.0-beta.19178.1\tools\net472\Microsoft.DotNet.Build.Tasks.Feed.dll</MicrosoftDotNetBuildTasksFeedFilePath>
     <MicrosoftDotNetMaestroTasksFilePath>$(SolutionPackagesFolder)microsoft.dotnet.maestro.tasks\1.1.0-beta.19178.1\tools\net472\Microsoft.DotNet.Maestro.Tasks.dll</MicrosoftDotNetMaestroTasksFilePath>
-    <NoWarn>$(NoWarn);NU5105</NoWarn>
     <VSFrameworkVersion>16.4.29519.181</VSFrameworkVersion>
     <VSServicesVersion>16.153.0</VSServicesVersion>
     <VSComponentsVersion>16.4.280</VSComponentsVersion>
@@ -73,7 +72,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>$(NoWarn);1762;VSTHRD003;VSTHRD010;VSTHRD100;VSTHRD109;VSSDK004;VSSDK005;VSSDK006</NoWarn>
+    <NoWarn>$(NoWarn);NU5105;1762;VSTHRD003;VSTHRD010;VSTHRD100;VSTHRD109;VSSDK004</NoWarn>
     <!-- Code Analysis is OFF by default -->
     <RunCodeAnalysis Condition=" '$(RunCodeAnalysis)' == ''">false</RunCodeAnalysis>
     <!--This property ensures that if you build the exact sources twice,

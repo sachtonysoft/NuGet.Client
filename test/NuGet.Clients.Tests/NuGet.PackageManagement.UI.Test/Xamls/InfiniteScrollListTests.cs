@@ -19,7 +19,9 @@ namespace NuGet.PackageManagement.UI.Test
     {
         public InfiniteScrollListTests()
         {
+#pragma warning disable VSSDK005 // Avoid instantiating JoinableTaskContext
             var joinableTaskContext = new JoinableTaskContext(Thread.CurrentThread, SynchronizationContext.Current);
+#pragma warning restore VSSDK005 // Avoid instantiating JoinableTaskContext
 
             NuGetUIThreadHelper.SetCustomJoinableTaskFactory(joinableTaskContext.Factory);
         }
@@ -214,7 +216,9 @@ namespace NuGet.PackageManagement.UI.Test
             var logger = new Mock<INuGetUILogger>();
             var searchResultTask = Task.FromResult(new SearchResult<IPackageSearchMetadata>());
 
+#pragma warning disable VSSDK005 // Avoid instantiating JoinableTaskContext
             using (var joinableTaskContext = new JoinableTaskContext(Thread.CurrentThread, SynchronizationContext.Current))
+#pragma warning restore VSSDK005 // Avoid instantiating JoinableTaskContext
             {
                 var list = new InfiniteScrollList(new Lazy<JoinableTaskFactory>(() => joinableTaskContext.Factory));
                 var taskCompletionSource = new TaskCompletionSource<string>();
