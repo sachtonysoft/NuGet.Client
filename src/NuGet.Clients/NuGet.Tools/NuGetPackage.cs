@@ -631,6 +631,10 @@ namespace NuGetVSExtension
                 {
                     windowFrame = await CreateNewWindowFrameAsync(project);
                 }
+                else //windowFrame existed.
+                {
+                    OverrideTabAndPackageSelection(windowFrame);
+                }
 
                 if (windowFrame != null)
                 {
@@ -648,6 +652,20 @@ namespace NuGetVSExtension
                     : string.Format(CultureInfo.CurrentCulture, Resources.DTE_ProjectUnsupported, projectName);
 
                 MessageHelper.ShowWarningMessage(errorMessage, Resources.ErrorDialogBoxTitle);
+            }
+        }
+
+        private void OverrideTabAndPackageSelection(IVsWindowFrame windowFrame)
+        {
+            if (_initialTab == ItemFilter.UpdatesAvailable)
+            {
+                var packageManagerControl = VsUtility.GetPackageManagerControl(windowFrame);
+                if (packageManagerControl != null)
+                {
+                    packageManagerControl.Model.AutoSelectPackageID = _autoSelectPackageID;
+                    packageManagerControl.Model.TabInitialLoadOverride = _initialTab;
+                    packageManagerControl.SelectInitialOverrideFilter();
+                }
             }
         }
 
